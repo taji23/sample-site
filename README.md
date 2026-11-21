@@ -2,7 +2,7 @@
 
 ユースサッカークラブ公式サイトのデザインサンプルです。仕様は [PROJECT_SPEC.md](./PROJECT_SPEC.md)、プロダクトの前提は [PRODUCT.md](./PRODUCT.md) を参照してください。
 
-> クラブ名・人物・試合・記事・企業名はすべて架空です。写真は AI 生成のイメージです（`public/images/photos/provenance.json`）。
+> クラブ名・人物・試合・記事・企業名はすべて架空です。サイト内のサンプル写真は AI 生成のイメージです（`public/images/photos/provenance.json`）。Instagram欄にはBeholdで連携した投稿が表示されます。
 
 ## 使い方
 
@@ -44,4 +44,5 @@ public/           フォント・写真・favicon
 - **色・文字・余白**: `src/styles/tokens.css` に集約。ブランド 7 色以外の色は追加しないでください。
 - **写真の差し替え**: `public/images/photos/` に同名・同サイズで置き換えるか、`src/data/images.js` を更新します。
 - **SNS / 連絡先**: `src/site.config.js`。URL を空にするとリンクは表示されません。
+- **Instagram**: `src/site.config.js` の `instagramWidgetFeedId` に Behold のフィード ID を設定します。空にするとサンプル画像に戻ります。投稿の更新・表示上限は Behold の契約プランに従い、表示には JavaScript と Behold への接続が必要です。YouTube は引き続きサンプルです。
 # sample-site

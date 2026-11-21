@@ -205,10 +205,13 @@ function SocialSection() {
       en: 'Follow Us',
       title: '公式SNS',
       id: 'social-title',
-      lead: 'クラブの日常や活動の様子を発信する予定です。表示している投稿・動画はサンプルで、SNSアカウントは未設定です。',
+      lead: site.instagramWidgetFeedId
+        ? 'Instagramの投稿をご覧いただけます。YouTubeの動画はサンプルです。'
+        : 'クラブの日常や活動の様子を発信する予定です。表示している投稿・動画はサンプルで、SNSアカウントは未設定です。',
     })}
     ${SocialFeed({
       instagram: find('instagram'),
+      instagramWidgetFeedId: site.instagramWidgetFeedId,
       youtube: find('youtube'),
       video: { title: '【ハイライト】U-15 サンプル地区リーグ 第8節 vs 東川FC', image: photo('match'), duration: '4:12' },
       instagramImages: [

@@ -56,7 +56,7 @@ export function SiteFooter() {
   </div>`
   }
   <div class="container container--wide site-footer__bottom">
-    <p class="site-footer__note">このサイトはデザインサンプルです。クラブ名・人物・試合・記事・企業名はすべて架空のもので、写真は AI で生成したイメージです。</p>
+    <p class="site-footer__note">このサイトはデザインサンプルです。クラブ名・人物・試合・記事・企業名は架空のもので、サンプル写真は AI で生成したイメージです。</p>
     <p class="site-footer__copy"><small lang="en">&copy; ${year} ${site.nameEn}</small></p>
   </div>
 </footer>`;

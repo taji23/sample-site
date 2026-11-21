@@ -3737,6 +3737,12 @@ a.sponsor__tile:hover {
 .social-feed__insta-preview {
   display: grid;
   gap: var(--space-s);
+  min-width: 0;
+}
+
+.social-feed__insta-preview behold-widget {
+  display: block;
+  min-width: 0;
 }
 
 .social-feed__sample {

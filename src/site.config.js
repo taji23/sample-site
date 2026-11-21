@@ -8,7 +8,7 @@ export const site = Object.freeze({
   /** Absolute origin for canonical / OG URLs. Replace on deployment. */
   origin: 'https://example.com',
   description:
-    'サンプルFCは U-8 から U-18 までの年代別チームとサッカースクールを運営するユースフットボールクラブです（本サイトの内容はすべて架空のサンプルです）。',
+    'サンプルFCは U-8 から U-18 までの年代別チームとサッカースクールを運営するユースフットボールクラブです（クラブ紹介は架空のサンプルです）。',
   themeColor: '#00236a',
   contact: {
     address: '〒000-0000 サンプル県サンプル市中央1-2-3（架空の住所）',
@@ -21,6 +21,7 @@ export const site = Object.freeze({
     { id: 'youtube', label: 'YouTube', handle: 'サンプルFC チャンネル', url: '' },
     { id: 'x', label: 'X', handle: '@samplefc', url: '' },
   ],
+  instagramWidgetFeedId: '4Qa1WF2VOZPlq5wfK5rD',
   fonts: {
     /** Japanese face via Google Fonts (unicode-range subsetting). Archivo is self-hosted. */
     stylesheet:

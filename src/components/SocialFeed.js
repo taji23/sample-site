@@ -11,17 +11,17 @@ import { Icon } from './Icon.js';
  */
 
 /**
- * Instagram grid + YouTube preview. No third-party embeds: configured account
- * URLs become external links; unset accounts remain non-interactive samples.
+ * Instagram feed + YouTube preview. Unset accounts remain non-interactive samples.
  * @param {{
  *   instagram?: SocialAccount,
+ *   instagramWidgetFeedId?: string,
  *   youtube?: SocialAccount,
  *   instagramImages: import('../types.js').ImageAsset[],
  *   video?: { title: string, image: import('../types.js').ImageAsset, duration?: string },
  *   others?: SocialAccount[],
  * }} props
  */
-export function SocialFeed({ instagram, youtube, instagramImages, video, others = [] }) {
+export function SocialFeed({ instagram, instagramWidgetFeedId, youtube, instagramImages, video, others = [] }) {
   const videoContent =
     youtube &&
     video &&
@@ -55,7 +55,19 @@ export function SocialFeed({ instagram, youtube, instagramImages, video, others 
   ${
     instagram &&
     html`<div class="social-feed__insta" data-reveal>
-    ${instagram.url ? html`<a class="social-feed__insta-link" href="${instagram.url}" rel="noopener" target="_blank">${instagramContent}</a>` : html`<div class="social-feed__insta-preview">${instagramContent}</div>`}
+    ${
+      instagramWidgetFeedId
+        ? html`<div class="social-feed__insta-preview">
+      <div class="social-feed__insta-head">${Icon('instagram', { size: 22 })}<span class="social-feed__handle" lang="en">Instagram</span></div>
+      <behold-widget feed-id="${instagramWidgetFeedId}"></behold-widget>
+      <p class="social-feed__notice" id="instagram-widget-error" hidden>Instagramの投稿を読み込めませんでした。時間をおいて再度お試しください。</p>
+      <noscript><p class="social-feed__notice">Instagramの投稿を見るにはJavaScriptを有効にしてください。</p></noscript>
+      <script type="module" src="https://w.behold.so/widget.js" onerror="document.getElementById('instagram-widget-error').hidden = false"></script>
+    </div>`
+        : instagram.url
+          ? html`<a class="social-feed__insta-link" href="${instagram.url}" rel="noopener" target="_blank">${instagramContent}</a>`
+          : html`<div class="social-feed__insta-preview">${instagramContent}</div>`
+    }
   </div>`
   }
   ${
