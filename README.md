@@ -18,6 +18,10 @@ npm run serve   # http://localhost:8000/ で dist/ を確認（python3）
 - デザインシステム一覧: `/styleguide/`（noindex）
 - ナビゲーションにあるのにページ未実装の URL は「準備中」ページとして自動生成されます（noindex）。
 
+## Cloudflare Workers へのデプロイ
+
+Workers Builds のビルドコマンドを `npm run build`、デプロイコマンドを `npx wrangler deploy` に設定します。`wrangler.jsonc` は生成された `dist/` を静的アセットとして配信します。設定を変更した場合はリポジトリに反映してから再デプロイしてください。ローカルからデプロイする場合は、設定の `name` を Cloudflare 上の対象 Worker 名に合わせてください。
+
 ## 構成
 
 ```
