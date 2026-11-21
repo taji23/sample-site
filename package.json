@@ -1,0 +1,14 @@
+{
+  "name": "sample-fc-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "サンプルFC 公式サイト（静的生成・依存パッケージなし）",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "python3 -m http.server 8000 --directory dist"
+  }
+}

@@ -1,0 +1,546 @@
+/* ==========================================================================
+   Card — shared shell + NewsCard / TeamCard / MatchCard
+   One stretched link per card (the title), so the whole surface is clickable
+   while assistive tech hears a single, meaningful link.
+   ========================================================================== */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-surface);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-raised);
+}
+
+.card__link:focus-visible {
+  outline: none;
+}
+
+.card__link:focus-visible::after {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.card__body {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m) var(--space-m) var(--space-l);
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xs) var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.card__title {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: 1.55;
+  color: var(--color-heading);
+}
+
+.card__title .card__link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition:
+    color var(--dur-base) var(--ease-out),
+    background-size var(--dur-slow) var(--ease-out);
+}
+
+.card__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.8;
+}
+
+.card__arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: auto;
+  align-self: flex-end;
+  border: var(--border-hair) solid var(--color-line-strong);
+  border-radius: 50%;
+  color: var(--color-heading);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+
+.card__arrow .icon {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .card:has(.card__link):hover {
+    transform: translateY(var(--hover-lift));
+    box-shadow: var(--shadow-m);
+  }
+
+  .card:hover .media img,
+  .card:hover .media__pitch {
+    transform: scale(var(--hover-zoom));
+  }
+
+  .card:hover .card__title .card__link {
+    color: var(--color-action);
+    background-size: 100% 1px;
+  }
+
+  .card:hover .card__arrow {
+    background: var(--brand-royal);
+    border-color: var(--brand-royal);
+    color: var(--brand-white);
+  }
+
+  .card:hover .card__arrow .icon {
+    transform: translateX(calc(var(--arrow-shift) / 2));
+  }
+}
+
+/* ---- NewsCard ------------------------------------------------------------ */
+
+.news-card {
+  border: var(--border-hair) solid var(--color-line);
+}
+
+.news-card .card__meta {
+  min-height: 1.5rem;
+}
+
+/* Feature: wide photo, text panel overlaps its lower edge on desktop. */
+@media (min-width: 64em) {
+  .news-card--feature {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: end;
+    border: 0;
+    background: transparent;
+  }
+
+  .news-card--feature .card__media {
+    grid-column: 1 / 9;
+    grid-row: 1;
+  }
+
+  .news-card--feature .card__body {
+    grid-column: 7 / 13;
+    grid-row: 1;
+    margin-bottom: calc(var(--space-xl) * -1);
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-m);
+  }
+
+  .news-card--feature .card__title {
+    font-size: clamp(1.375rem, 1rem + 0.8vw, 1.75rem);
+    line-height: 1.5;
+  }
+
+  .news-card--feature:has(.card__link):hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .news-card--feature:hover .card__body {
+    box-shadow: var(--shadow-l);
+  }
+
+  .news-card--feature .card__body::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: var(--space-xl);
+    width: 3rem;
+    height: var(--rule-accent);
+    background: var(--brand-gold);
+  }
+}
+
+/* Lead: borderless editorial card with a large title (homepage news). */
+.news-card--lead,
+.news-card--compact {
+  border: 0;
+  background: transparent;
+}
+
+.news-card--lead .card__body {
+  padding: var(--space-m) 0 0;
+}
+
+.news-card--lead .card__title {
+  font-size: clamp(1.375rem, 1.05rem + 1.1vw, 2rem);
+  line-height: 1.5;
+}
+
+.news-card--lead .card__excerpt {
+  font-size: var(--fs-body);
+}
+
+/* Compact: thumbnail row inside a ruled list. */
+.news-card--compact {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-m);
+  padding-block: var(--space-m);
+  border-bottom: var(--border-hair) solid var(--color-line);
+}
+
+.news-card--compact .card__body {
+  gap: var(--space-2xs);
+  padding: 0;
+}
+
+.news-card--compact .card__title {
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+@media (min-width: 40em) {
+  .news-card--compact {
+    grid-template-columns: 10rem minmax(0, 1fr);
+  }
+}
+
+@media (hover: hover) {
+  .news-card--lead:has(.card__link):hover,
+  .news-card--compact:has(.card__link):hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ---- TeamCard ------------------------------------------------------------ */
+
+.team-card {
+  overflow: hidden;
+  background: var(--brand-navy);
+  isolation: isolate;
+}
+
+.team-card .card__media {
+  z-index: -1;
+}
+
+.team-card .card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-bottom);
+}
+
+.team-card__overlay {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-2xs) var(--space-s);
+  padding: var(--space-m);
+}
+
+.team-card__title {
+  grid-column: 1 / -1;
+  color: var(--color-dark-text);
+}
+
+.team-card__title .card__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.team-card__label {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 2.2rem + 3.6vw, 4.75rem);
+  font-weight: var(--fw-display);
+  font-stretch: var(--stretch-display);
+  line-height: 0.85;
+  letter-spacing: -0.01em;
+}
+
+.team-card__name {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+}
+
+.team-card__grade,
+.team-card__summary {
+  grid-column: 1;
+  color: var(--color-dark-text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+.team-card__grade {
+  padding-top: var(--space-2xs);
+  border-top: var(--border-hair) solid var(--color-dark-line);
+}
+
+.team-card__arrow {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+  border-color: color-mix(in srgb, var(--brand-white) 45%, transparent);
+  color: var(--brand-white);
+}
+
+/* Gold rule draws across the top of the overlay on hover. */
+.team-card .card__link:focus-visible::after {
+  outline-color: var(--brand-gold);
+  outline-offset: -6px;
+}
+
+.team-card__overlay::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: var(--space-m);
+  height: var(--rule-accent);
+  background: var(--brand-gold);
+  transform: scaleX(0.18);
+  transform-origin: left center;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .team-card:hover .team-card__overlay::before {
+    transform: scaleX(1);
+  }
+
+  .team-card:hover .card__title .card__link {
+    color: var(--color-dark-text);
+    background-size: 0 0;
+  }
+
+  .team-card:hover .card__arrow {
+    background: var(--brand-gold);
+    border-color: var(--brand-gold);
+    color: var(--brand-navy);
+  }
+}
+
+/* ---- MatchCard ----------------------------------------------------------- */
+
+.match-card {
+  --crest-size: 3.25rem;
+  gap: var(--space-m);
+  padding: var(--space-m);
+  border: var(--border-hair) solid var(--color-line);
+}
+
+.match-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2xs) var(--space-s);
+}
+
+.match-card__competition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-2xs);
+  color: var(--color-heading);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  line-height: 1.5;
+}
+
+.match-card__category {
+  font-family: var(--font-numeric);
+  font-weight: var(--fw-display);
+  font-stretch: var(--stretch-display);
+  font-size: 1.0625rem;
+  letter-spacing: 0.02em;
+  color: var(--color-accent-text);
+}
+
+.match-card__round {
+  color: var(--color-text-muted);
+  font-weight: var(--fw-regular);
+}
+
+.match-card__badges {
+  --cluster-gap: var(--space-2xs);
+}
+
+.match-card__result {
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  color: var(--color-heading);
+}
+
+.match-card__result--win {
+  color: var(--color-accent-text);
+}
+
+.match-card__fixture {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+
+.match-card__fixture,
+.match-card__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-xs);
+}
+
+.match-card__link {
+  grid-column: 1 / -1;
+}
+
+.match-card__team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+  text-align: center;
+}
+
+.match-card__team-name {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  line-height: 1.45;
+}
+
+.match-card__center {
+  display: grid;
+  place-items: center;
+  min-height: var(--crest-size);
+}
+
+.match-card__score,
+.match-card__vs {
+  font-family: var(--font-numeric);
+  font-weight: var(--fw-display);
+  font-stretch: var(--stretch-display);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.match-card__score {
+  font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3rem);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-heading);
+}
+
+.match-card__dash {
+  color: var(--brand-gold);
+}
+
+.match-card__vs {
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.match-card__details {
+  display: grid;
+  gap: var(--space-2xs);
+  padding-top: var(--space-s);
+  border-top: var(--border-hair) solid var(--color-line);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+.match-card__details > div {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2xs);
+}
+
+.match-card__details dt {
+  flex: none;
+  padding-top: 0.1em;
+  color: var(--color-accent-text);
+}
+
+.match-card__details dd {
+  min-width: 0;
+}
+
+.match-card__day {
+  font-family: var(--font-numeric);
+  font-weight: var(--fw-bold);
+}
+
+.match-card__weekday {
+  margin-inline: -0.25em 0.25em;
+  letter-spacing: 0;
+}
+
+@media (hover: hover) {
+  .match-card:hover .card__link {
+    background-size: 0 0;
+  }
+}
+
+/* Feature (Next Match): navy band with larger fixture. */
+.match-card--feature {
+  --crest-size: clamp(4rem, 3rem + 4vw, 6rem);
+  gap: var(--space-l);
+  padding: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+  border: 0;
+  background: var(--color-dark-bg);
+  box-shadow: var(--shadow-l);
+}
+
+.match-card--feature .match-card__team-name {
+  font-size: clamp(0.9375rem, 0.85rem + 0.4vw, 1.125rem);
+}
+
+.match-card--feature .match-card__vs {
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  color: var(--brand-gold);
+}
+
+.match-card--feature .crest:not(.crest--club) {
+  background: var(--color-dark-bg-raised);
+  border-color: var(--color-dark-line);
+  color: var(--brand-white);
+}
+
+@media (min-width: 40em) {
+  .match-card--feature .match-card__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-l);
+  }
+}

@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Design tokens — サンプルFC
+   Single source of truth for color, type, space, layout, depth, and motion.
+   Brand palette is fixed by PROJECT_SPEC.md §3; every other color is derived
+   from it. Components reference semantic tokens (--color-*), never raw hex.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ---- Brand palette (spec §3, do not add hues) ------------------------- */
+  --brand-white: #ffffff;
+  --brand-mist: #f8fafc;
+  --brand-navy: #00236a;
+  --brand-royal: #0054a7;
+  --brand-gold: #bbab54;
+  --brand-ink: #1e293b;
+  --brand-slate: #64748b;
+
+  /* Gold fails contrast as text on white (2.32:1). This darkened gold is the
+     only gold allowed for small text on light surfaces (4.96:1 on white). */
+  --brand-gold-ink: #7d7030;
+
+  /* ---- Semantic color: light surfaces ----------------------------------- */
+  --color-bg: var(--brand-white);
+  --color-bg-alt: var(--brand-mist);
+  --color-surface: var(--brand-white);
+  --color-text: var(--brand-ink);
+  --color-text-muted: var(--brand-slate);
+  --color-heading: var(--brand-navy);
+  --color-action: var(--brand-royal);
+  --color-action-hover: var(--brand-navy);
+  --color-accent: var(--brand-gold);
+  --color-accent-text: var(--brand-gold-ink);
+  --color-line: color-mix(in srgb, var(--brand-navy) 12%, transparent);
+  --color-line-strong: color-mix(in srgb, var(--brand-navy) 24%, transparent);
+  --color-tint: color-mix(in srgb, var(--brand-royal) 7%, var(--brand-white));
+  --color-focus: var(--brand-royal);
+  --color-selection-bg: var(--brand-gold);
+  --color-selection-text: var(--brand-navy);
+  --color-danger: #b3261e; /* functional error state only, never decorative */
+
+  /* ---- Semantic color: navy surfaces ------------------------------------ */
+  --color-dark-bg: var(--brand-navy);
+  --color-dark-bg-raised: color-mix(in srgb, var(--brand-navy) 86%, var(--brand-royal));
+  --color-dark-text: var(--brand-white);
+  --color-dark-text-muted: color-mix(in srgb, var(--brand-white) 76%, var(--brand-navy)); /* 8.3:1 */
+  --color-dark-line: color-mix(in srgb, var(--brand-white) 18%, transparent);
+  --color-dark-focus: var(--brand-gold);
+
+  /* Photo scrims: navy, never black, so imagery sits inside the brand. */
+  --scrim-bottom: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--brand-navy) 0%, transparent) 30%,
+    color-mix(in srgb, var(--brand-navy) 55%, transparent) 62%,
+    color-mix(in srgb, var(--brand-navy) 92%, transparent) 100%
+  );
+
+  /* ---- Typography ------------------------------------------------------- */
+  --font-display: "Archivo", "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  --font-numeric: "Archivo", "Hiragino Sans", sans-serif;
+
+  /* Archivo width axis: condensed for display, normal for UI labels. */
+  --stretch-display: 72%;
+  --stretch-label: 100%;
+
+  /* Fluid scale, 360px → 1440px. Display is capped at 6rem. */
+  --fs-display: clamp(2.75rem, 1.35rem + 6.2vw, 6rem);
+  --fs-h1: clamp(2.25rem, 1.4rem + 3.8vw, 4.5rem);
+  --fs-h2: clamp(2rem, 1.3rem + 3.1vw, 3.75rem);
+  --fs-h3: clamp(1.1875rem, 1.05rem + 0.5vw, 1.5rem);
+  --fs-h4: 1.125rem;
+  --fs-lead: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-caption: 0.8125rem;
+  --fs-numeral: clamp(3.25rem, 2rem + 5.4vw, 6rem);
+
+  --lh-display: 0.92;
+  --lh-heading-ja: 1.4;
+  --lh-tight: 1.25;
+  --lh-body: 1.85; /* Japanese body copy needs generous leading */
+  --lh-ui: 1.5;
+
+  --tracking-display: -0.01em;
+  --tracking-label: 0.08em;
+  --tracking-ja: 0.04em;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+  --fw-display: 800;
+
+  --measure-prose: 38em; /* ≈ 38 full-width characters per line in Japanese */
+  --measure-lead: 34em;
+
+  /* ---- Space (4px base) ------------------------------------------------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  --section-space: clamp(4.5rem, 2.6rem + 8.4vw, 10rem);
+  --section-space-tight: clamp(3rem, 2rem + 4.4vw, 6rem);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --container-max: 80rem;      /* 1280px content */
+  --container-wide: 92rem;     /* 1472px editorial bleed */
+  --container-narrow: 48rem;   /* prose */
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 3rem);
+  --grid-gap: clamp(1rem, 0.5rem + 2vw, 2rem);
+  --header-height: 4.5rem;
+
+  /* ---- Shape & depth ---------------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-s: 4px;
+  --radius-pill: 999px;
+  --border-hair: 1px;
+  --border-strong: 2px;
+  --rule-accent: 3px;
+
+  --shadow-s: 0 1px 2px rgb(0 35 106 / 0.06), 0 2px 8px -2px rgb(0 35 106 / 0.08);
+  --shadow-m: 0 4px 10px -4px rgb(0 35 106 / 0.12), 0 14px 32px -10px rgb(0 35 106 / 0.2);
+  --shadow-l: 0 10px 24px -10px rgb(0 35 106 / 0.18), 0 32px 64px -20px rgb(0 35 106 / 0.32);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);   /* expo-out: primary */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-instant: 120ms;
+  --dur-fast: 220ms;
+  --dur-base: 420ms;
+  --dur-slow: 900ms;
+  --dur-reveal: 1100ms;
+  --hover-lift: -4px;
+  --hover-zoom: 1.06;
+  --arrow-shift: 4px;
+
+  --z-base: 0;
+  --z-raised: 10;
+  --z-header: 100;
+  --z-overlay: 200;
+}
+
+@media (min-width: 64em) {
+  :root {
+    --header-height: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-reveal: 0ms;
+    --hover-lift: 0px;
+    --hover-zoom: 1;
+    --arrow-shift: 0px;
+  }
+}

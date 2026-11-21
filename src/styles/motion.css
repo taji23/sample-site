@@ -1,0 +1,207 @@
+/* ==========================================================================
+   Motion. Everything here is progressive: content is fully visible without
+   JS (.no-js), and prefers-reduced-motion collapses durations to zero via
+   tokens plus the explicit opt-outs at the bottom.
+   ========================================================================== */
+
+/* ---- Page transitions (cross-document, supporting browsers only) --------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 320ms;
+  animation-timing-function: var(--ease-out);
+}
+
+/* ---- Scroll reveal ------------------------------------------------------- */
+
+.js [data-reveal]:not(.is-visible),
+.js [data-reveal-stagger]:not(.is-visible) > * {
+  opacity: 0;
+  transform: translateY(1.75rem);
+}
+
+.js [data-reveal],
+.js [data-reveal-stagger] > * {
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+}
+
+.js [data-reveal-stagger] > * {
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* Section numerals rise out of a mask; the gold rule draws after them. */
+.js .section-heading[data-reveal] .section-heading__number {
+  display: inline-block;
+  clip-path: inset(0 0 0 0);
+  transition:
+    clip-path var(--dur-reveal) var(--ease-out) 120ms,
+    transform var(--dur-reveal) var(--ease-out) 120ms;
+}
+
+.js .section-heading[data-reveal]:not(.is-visible) .section-heading__number {
+  clip-path: inset(100% 0 0 0);
+  transform: translateY(40%);
+}
+
+.js .section-heading[data-reveal] .section-heading__rule {
+  transition: transform var(--dur-reveal) var(--ease-out) 380ms;
+}
+
+.js .section-heading[data-reveal]:not(.is-visible) .section-heading__rule {
+  transform: scaleX(0);
+}
+
+/* Pathway: the gold line draws through every stop. */
+.js .pathway::after {
+  transition: transform 1.6s var(--ease-out) 200ms;
+}
+
+.js .pathway:not(.is-visible)::after {
+  transform: scaleY(0);
+}
+
+@media (min-width: 64em) {
+  .js .pathway:not(.is-visible)::after {
+    transform: scaleX(0);
+  }
+}
+
+.js .pathway__stop::before {
+  transition: transform var(--dur-base) var(--ease-out) calc(300ms + var(--i, 0) * 180ms);
+}
+
+.js .pathway:not(.is-visible) .pathway__stop::before {
+  transform: scale(0);
+}
+
+/* ---- Hero entrance ------------------------------------------------------- */
+
+.js .hero__media img {
+  transition: transform 2.8s var(--ease-out);
+}
+
+.js .hero:not(.is-loaded) .hero__media img {
+  transform: scale(1.12);
+}
+
+.js .hero__line > span {
+  transition: transform 1.2s var(--ease-out) calc(200ms + var(--i, 0) * 130ms);
+}
+
+.js .hero:not(.is-loaded) .hero__line > span {
+  transform: translateY(105%);
+}
+
+.js .hero__ja,
+.js .hero__lead,
+.js .hero__actions {
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+}
+
+.js .hero__ja { transition-delay: 520ms; }
+.js .hero__lead { transition-delay: 660ms; }
+.js .hero__actions { transition-delay: 800ms; }
+
+.js .hero:not(.is-loaded) :is(.hero__ja, .hero__lead, .hero__actions) {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.js .hero__ja::before {
+  transition: transform var(--dur-reveal) var(--ease-out) 700ms;
+}
+
+.js .hero:not(.is-loaded) .hero__ja::before {
+  transform: scaleX(0);
+}
+
+.js .next-match__panel {
+  transition:
+    opacity var(--dur-slow) var(--ease-out) 950ms,
+    transform var(--dur-reveal) var(--ease-out) 950ms;
+}
+
+.js body:not(.is-ready) .next-match__panel {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+/* ---- Parallax (scroll-driven animations; no JS, no scroll listeners) ----- */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-parallax="slow"] .media img {
+      scale: 1.14;
+      animation: parallax-image linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    [data-parallax="fast"] {
+      animation: parallax-float linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    .recruit__media[data-parallax] {
+      animation: parallax-band linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+}
+
+@keyframes parallax-image {
+  from { translate: 0 -5%; }
+  to { translate: 0 5%; }
+}
+
+@keyframes parallax-float {
+  from { translate: 0 2.5rem; }
+  to { translate: 0 -2.5rem; }
+}
+
+@keyframes parallax-band {
+  from { translate: 0 -6%; }
+  to { translate: 0 6%; }
+}
+
+/* ---- Reduced motion ------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal]:not(.is-visible),
+  .js [data-reveal-stagger]:not(.is-visible) > *,
+  .js .hero:not(.is-loaded) :is(.hero__ja, .hero__lead, .hero__actions),
+  .js body:not(.is-ready) .next-match__panel {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .hero:not(.is-loaded) .hero__media img,
+  .js .hero:not(.is-loaded) .hero__line > span,
+  .js .hero:not(.is-loaded) .hero__ja::before,
+  .js .section-heading[data-reveal]:not(.is-visible) .section-heading__number,
+  .js .section-heading[data-reveal]:not(.is-visible) .section-heading__rule,
+  .js .pathway:not(.is-visible)::after,
+  .js .pathway:not(.is-visible) .pathway__stop::before {
+    clip-path: none;
+    transform: none;
+  }
+
+  .hero__scroll i::after {
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

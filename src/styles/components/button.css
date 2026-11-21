@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Button — primary / secondary / accent / text; sm / md / lg
+   Hover: a fill layer wipes in from the leading edge (expo-out) and the
+   arrow shifts forward. Variants only set the private --_* properties.
+   ========================================================================== */
+
+.btn {
+  --_bg: var(--brand-royal);
+  --_fg: var(--brand-white);
+  --_border: transparent;
+  --_fill: var(--brand-navy);
+  --_fg-hover: var(--brand-white);
+  --_border-hover: var(--_border);
+  --_height: 3rem;
+  --_pad: 1.5rem;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75em;
+  min-height: var(--_height);
+  padding: 0.5rem var(--_pad);
+  overflow: hidden;
+  border: var(--border-strong) solid var(--_border);
+  border-radius: var(--radius-xs);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--_fill);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.btn__icon {
+  flex: none;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    color: var(--_fg-hover);
+    border-color: var(--_border-hover);
+    text-decoration: none;
+  }
+
+  .btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  .btn:hover .btn__icon {
+    transform: translateX(var(--arrow-shift));
+  }
+
+  .btn--external:hover .btn__icon {
+    transform: translate(calc(var(--arrow-shift) / 2), calc(var(--arrow-shift) / -2));
+  }
+}
+
+.btn:focus-visible {
+  outline-offset: 3px;
+}
+
+.btn:active::before {
+  transform: scaleX(1);
+}
+
+/* ---- Variants ------------------------------------------------------------ */
+
+.btn--secondary {
+  --_bg: transparent;
+  --_fg: var(--brand-navy);
+  --_border: var(--brand-navy);
+  --_fill: var(--brand-navy);
+  --_fg-hover: var(--brand-white);
+}
+
+/* JOIN US / trial: the only filled-gold control. Navy on gold = 6.26:1. */
+.btn--accent {
+  --_bg: var(--brand-gold);
+  --_fg: var(--brand-navy);
+  --_fill: var(--brand-navy);
+  --_fg-hover: var(--brand-white);
+}
+
+.btn--text {
+  --_bg: transparent;
+  --_fg: var(--brand-navy);
+  --_fill: transparent;
+  --_fg-hover: var(--brand-royal);
+  --_height: 2.75rem;
+  --_pad: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+}
+
+.btn--text::before {
+  inset: auto 0 0.35rem;
+  height: var(--border-strong);
+  background: var(--brand-gold);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@media (hover: hover) {
+  .btn--text:hover::before {
+    background: var(--brand-royal);
+  }
+}
+
+/* On navy surfaces the royal fill disappears, so primary becomes gold. */
+.on-dark .btn--primary,
+.tone-navy .btn--primary,
+.on-dark .btn--accent,
+.tone-navy .btn--accent {
+  --_bg: var(--brand-gold);
+  --_fg: var(--brand-navy);
+  --_fill: var(--brand-white);
+  --_fg-hover: var(--brand-navy);
+}
+
+.on-dark .btn--secondary,
+.tone-navy .btn--secondary {
+  --_fg: var(--brand-white);
+  --_border: color-mix(in srgb, var(--brand-white) 55%, transparent);
+  --_border-hover: var(--brand-white);
+  --_fill: var(--brand-white);
+  --_fg-hover: var(--brand-navy);
+}
+
+.on-dark .btn--text,
+.tone-navy .btn--text {
+  --_fg: var(--brand-white);
+  --_fg-hover: var(--brand-gold);
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+
+.btn--sm {
+  --_height: 2.5rem;
+  --_pad: 1rem;
+  font-size: var(--fs-small);
+}
+
+.btn--lg {
+  --_height: 3.75rem;
+  --_pad: 2rem;
+  font-size: 1rem;
+}
+
+.btn--block {
+  display: flex;
+  width: 100%;
+}
+
+/* ---- States -------------------------------------------------------------- */
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  --_bg: var(--color-bg-alt);
+  --_fg: var(--color-text-muted);
+  --_border: var(--color-line-strong);
+  --_fill: transparent;
+  --_fg-hover: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.btn:disabled .btn__icon,
+.btn[aria-disabled="true"] .btn__icon {
+  transform: none;
+}
+
+.on-dark .btn:disabled,
+.tone-navy .btn:disabled,
+.on-dark .btn[aria-disabled="true"],
+.tone-navy .btn[aria-disabled="true"] {
+  --_bg: transparent;
+  --_fg: var(--color-dark-text-muted);
+  --_border: var(--color-dark-line);
+}
+
+.btn[aria-busy="true"] {
+  cursor: progress;
+  pointer-events: none;
+}
+
+.btn[aria-busy="true"] .btn__icon {
+  visibility: hidden;
+}
+
+.btn[aria-busy="true"]::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: var(--_pad);
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.8s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn[aria-busy="true"]::after {
+    animation-duration: 2.4s;
+  }
+}

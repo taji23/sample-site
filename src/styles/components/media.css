@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Media frame + Badge + Crest
+   ========================================================================== */
+
+.media {
+  --_ratio: 3 / 2;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--_ratio);
+  background: var(--color-bg-alt);
+}
+
+.media--portrait { --_ratio: 4 / 5; }
+.media--wide { --_ratio: 16 / 9; }
+.media--square { --_ratio: 1 / 1; }
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+/* Designed placeholder: navy field with pitch markings, honest "Photo" label. */
+.media--placeholder {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 90% at 85% 10%, color-mix(in srgb, var(--brand-royal) 70%, transparent), transparent 60%),
+    linear-gradient(160deg, var(--brand-navy) 0%, color-mix(in srgb, var(--brand-navy) 80%, #000) 100%);
+  color: color-mix(in srgb, var(--brand-white) 16%, transparent);
+}
+
+.media__pitch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.media__placeholder-label {
+  position: absolute;
+  inset-block-start: var(--space-s);
+  inset-inline-start: var(--space-s);
+  color: color-mix(in srgb, var(--brand-white) 70%, transparent);
+  font-family: var(--font-numeric);
+  font-size: 0.6875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---- Badge --------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  padding: 0.125rem 0.625rem;
+  border: var(--border-hair) solid transparent;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.badge--navy {
+  background: var(--brand-navy);
+  color: var(--brand-white);
+}
+
+.badge--royal {
+  background: var(--brand-royal);
+  color: var(--brand-white);
+}
+
+.badge--gold {
+  background: var(--brand-gold);
+  color: var(--brand-navy);
+}
+
+.badge--outline {
+  border-color: var(--color-line-strong);
+  color: var(--color-heading);
+}
+
+.badge--muted {
+  background: var(--color-bg-alt);
+  border-color: var(--color-line);
+  color: var(--color-text-muted);
+}
+
+.on-dark .badge--navy,
+.tone-navy .badge--navy {
+  background: var(--brand-white);
+  color: var(--brand-navy);
+}
+
+.on-dark .badge--muted,
+.tone-navy .badge--muted {
+  background: transparent;
+}
+
+/* ---- Crest (monogram stand-in until real emblems exist) ------------------ */
+
+.crest {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--crest-size, 3.5rem);
+  aspect-ratio: 1;
+  border: var(--border-hair) solid var(--color-line-strong);
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--brand-navy);
+  font-family: var(--font-numeric);
+  font-size: calc(var(--crest-size, 3.5rem) * 0.3);
+  font-weight: var(--fw-display);
+  font-stretch: var(--stretch-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.crest--club {
+  border: var(--border-strong) solid var(--brand-gold);
+  background: var(--brand-navy);
+  color: var(--brand-gold);
+}

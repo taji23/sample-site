@@ -1,0 +1,51 @@
+[
+  {
+    "files": "hero-*.jpg",
+    "source": "AI-generated (Copilot image generation)",
+    "created": "2026-11-21",
+    "subject": "Youth player from behind with a ball on a floodlit stadium pitch at dusk",
+    "replaceWith": "Real club photo: player or team on home pitch, landscape, ≥1920px wide"
+  },
+  {
+    "files": "philosophy-*.jpg",
+    "source": "AI-generated (Copilot image generation)",
+    "created": "2026-11-21",
+    "subject": "Boots and ball on dewy grass at golden hour",
+    "replaceWith": "Real detail photo (portrait), e.g. training equipment on the club pitch"
+  },
+  {
+    "files": "academy-*.jpg",
+    "source": "AI-generated (Copilot image generation)",
+    "created": "2026-11-21",
+    "subject": "Coach explaining tactics to academy players on a tactics board",
+    "replaceWith": "Real academy training photo, landscape"
+  },
+  {
+    "files": "school-*.jpg",
+    "source": "AI-generated (Copilot image generation)",
+    "created": "2026-11-21",
+    "subject": "Children's feet dribbling between cones",
+    "replaceWith": "Real football school photo (consent required for minors), landscape"
+  },
+  {
+    "files": "join-*.jpg",
+    "source": "AI-generated (Copilot image generation)",
+    "created": "2026-11-21",
+    "subject": "Team huddle from behind under floodlights",
+    "replaceWith": "Real team huddle photo, landscape"
+  },
+  {
+    "files": "match-*.jpg",
+    "source": "AI-generated (Copilot image generation)",
+    "created": "2026-11-21",
+    "subject": "Two players contesting the ball in a match",
+    "replaceWith": "Real matchday photo, landscape"
+  },
+  {
+    "files": "u8-*.jpg, u12-*.jpg, u15-*.jpg, u18-*.jpg",
+    "source": "AI-generated (Copilot image generation)",
+    "created": "2026-11-21",
+    "subject": "One portrait per age category, players seen from behind",
+    "replaceWith": "Real category team photos, portrait 4:5, ≥800px wide"
+  }
+]

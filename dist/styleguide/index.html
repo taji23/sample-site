@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.replace("no-js","js")</script>
+  <title>デザインシステム｜サンプルFC</title>
+  <meta name="description" content="サンプルFCは U-8 から U-18 までの年代別チームとサッカースクールを運営するユースフットボールクラブです（本サイトの内容はすべて架空のサンプルです）。">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://example.com/styleguide/">
+  <meta name="theme-color" content="#00236a">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="サンプルFC">
+  <meta property="og:title" content="デザインシステム｜サンプルFC">
+  <meta property="og:description" content="サンプルFCは U-8 から U-18 までの年代別チームとサッカースクールを運営するユースフットボールクラブです（本サイトの内容はすべて架空のサンプルです）。">
+  <meta property="og:url" content="https://example.com/styleguide/">
+  <meta property="og:locale" content="ja_JP">
+  
+  <meta name="twitter:card" content="summary">
+  <link rel="preload" href="/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/styleguide.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script type="module" src="/assets/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <main id="main">
+  <header class="tone-navy sg-hero">
+    <div class="container">
+      <h1 class="t-display" lang="en">Sample FC<br>Design System</h1>
+      <p class="t-lead sg-hero__lead">サンプルFC 公式サイトのデザイントークンとコンポーネントの一覧です。開発用ページのため検索エンジンには表示されません。掲載しているチーム名・試合・記事はすべて架空のサンプルです。</p>
+    </div>
+  </header>
+  <section class="section" aria-labelledby="sg-color">
+  <div class="container">
+    <header class="section-heading section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">01</span><span class="section-heading__rule"></span></div>
+  <h2 class="section-heading__title" id="sg-color"><span class="section-heading__en" lang="en">Color</span><span class="section-heading__ja">カラー</span></h2>
+  <div class="section-heading__aside"><p class="section-heading__lead">仕様書で指定された7色のみを使用します。ゴールドの文字用に暗くした派生色を1色だけ追加し、そのほかの色はすべてこの範囲から算出します。</p></div>
+</header>
+    <ul class="sg-swatches" role="list">
+      <li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-white)"></span>
+        <span class="sg-swatch__hex t-label">#FFFFFF</span>
+        <code class="sg-swatch__token">--brand-white</code>
+        <span class="sg-swatch__role">メイン背景</span>
+        <span class="t-caption">本文 #1E293B と 14.6:1</span>
+      </li><li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-mist)"></span>
+        <span class="sg-swatch__hex t-label">#F8FAFC</span>
+        <code class="sg-swatch__token">--brand-mist</code>
+        <span class="sg-swatch__role">セカンダリ背景</span>
+        <span class="t-caption">本文と 14.0:1</span>
+      </li><li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-navy)"></span>
+        <span class="sg-swatch__hex t-label">#00236A</span>
+        <code class="sg-swatch__token">--brand-navy</code>
+        <span class="sg-swatch__role">ブランドダーク・見出し・帯</span>
+        <span class="t-caption">白文字と 14.5:1</span>
+      </li><li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-royal)"></span>
+        <span class="sg-swatch__hex t-label">#0054A7</span>
+        <code class="sg-swatch__token">--brand-royal</code>
+        <span class="sg-swatch__role">アクション（ボタン・リンク）</span>
+        <span class="t-caption">白文字と 7.4:1</span>
+      </li><li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-gold)"></span>
+        <span class="sg-swatch__hex t-label">#BBAB54</span>
+        <code class="sg-swatch__token">--brand-gold</code>
+        <span class="sg-swatch__role">アクセント（罫線・数字・JOIN US）</span>
+        <span class="t-caption">白背景の文字には使用不可（2.3:1）／紺地で 6.3:1</span>
+      </li><li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-gold-ink)"></span>
+        <span class="sg-swatch__hex t-label">#7D7030</span>
+        <code class="sg-swatch__token">--brand-gold-ink</code>
+        <span class="sg-swatch__role">白背景上のゴールド文字（派生色）</span>
+        <span class="t-caption">白と 4.96:1</span>
+      </li><li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-ink)"></span>
+        <span class="sg-swatch__hex t-label">#1E293B</span>
+        <code class="sg-swatch__token">--brand-ink</code>
+        <span class="sg-swatch__role">本文テキスト</span>
+        <span class="t-caption">白と 14.6:1</span>
+      </li><li class="sg-swatch">
+        <span class="sg-swatch__chip" style="background:var(--brand-slate)"></span>
+        <span class="sg-swatch__hex t-label">#64748B</span>
+        <code class="sg-swatch__token">--brand-slate</code>
+        <span class="sg-swatch__role">補足テキスト</span>
+        <span class="t-caption">白と 4.8:1／#F8FAFC と 4.6:1</span>
+      </li>
+    </ul>
+  </div>
+</section>
+  <section class="section tone-mist" aria-labelledby="sg-type">
+  <div class="container">
+    <header class="section-heading section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">02</span><span class="section-heading__rule"></span></div>
+  <h2 class="section-heading__title" id="sg-type"><span class="section-heading__en" lang="en">Typography</span><span class="section-heading__ja">タイポグラフィ</span></h2>
+  <div class="section-heading__aside"><p class="section-heading__lead">欧文の見出し・数字は Archivo（コンデンス・極太）、和文は Zen Kaku Gothic New。サイズは画面幅 360px〜1440px で連続的に変化します。</p></div>
+</header>
+    <dl class="sg-type">
+      <div class="sg-type__row">
+        <dt class="t-label t-muted">Display<br><code>.t-display</code></dt>
+        <dd class="t-display" lang="en">Modern Football</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">H1<br><code>.t-h1</code></dt>
+        <dd class="t-h1">育成年代に、本物の環境を。</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">H2<br><code>.t-h2</code></dt>
+        <dd class="t-h2">クラブフィロソフィー</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">H3<br><code>.t-h3</code></dt>
+        <dd class="t-h3">U-12 ジュニアの年間スケジュール</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">Lead<br><code>.t-lead</code></dt>
+        <dd class="t-lead">選手一人ひとりの成長段階に合わせ、技術・判断・人間性をバランスよく育てます。</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">Body<br><code>.t-body</code></dt>
+        <dd class="t-body">練習は週3回、サンプル市立総合グラウンドで行います。初めてサッカーに触れるお子さまでも安心して参加できるよう、少人数のグループに分けて指導します。見学はいつでも受け付けています。</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">Small<br><code>.t-small</code></dt>
+        <dd class="t-small">※掲載の内容はすべて架空のサンプルです。</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">Label<br><code>.t-label</code></dt>
+        <dd class="t-label" lang="en">Next Match · 2026.11.29</dd>
+      </div><div class="sg-type__row">
+        <dt class="t-label t-muted">Numeral<br><code>.t-numeral</code></dt>
+        <dd class="t-numeral" style="font-size:3.5rem;color:var(--brand-navy)">01 23 4-2</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+  <section class="section" aria-labelledby="sg-layout">
+  <div class="container">
+    <header class="section-heading section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">03</span><span class="section-heading__rule"></span></div>
+  <h2 class="section-heading__title" id="sg-layout"><span class="section-heading__en" lang="en">Layout</span><span class="section-heading__ja">コンテナとグリッド</span></h2>
+  <div class="section-heading__aside"><p class="section-heading__lead">余白は画面幅に応じて 20px〜48px。本文の最大幅は 1280px、写真などの広い要素は 1472px、文章のみの部分は 768px です。</p></div>
+</header>
+  </div>
+  <div class="sg-containers">
+    <div class="container container--wide"><div class="sg-bar">.container--wide · 92rem</div></div>
+    <div class="container"><div class="sg-bar">.container · 80rem</div></div>
+    <div class="container container--narrow"><div class="sg-bar">.container--narrow · 48rem</div></div>
+  </div>
+  <div class="container sg-stack">
+    <p class="t-label t-muted"><code>.grid-auto</code>：件数に応じて自動で折り返し</p>
+    <div class="grid-auto" style="--grid-min:12rem">
+      <div class="sg-cell">1</div><div class="sg-cell">2</div><div class="sg-cell">3</div><div class="sg-cell">4</div><div class="sg-cell">5</div>
+    </div>
+    <p class="t-label t-muted"><code>.split .split--overlap</code>：7:5 の非対称、テキストが画像に重なる</p>
+    <div class="split split--overlap">
+      <div class="sg-cell sg-cell--tall">7 / 12</div>
+      <div class="sg-cell sg-cell--panel">5 / 12 (overlap)</div>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="sg-buttons">
+  <div class="container">
+    <header class="section-heading section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">04</span><span class="section-heading__rule"></span></div>
+  <h2 class="section-heading__title" id="sg-buttons"><span class="section-heading__en" lang="en">Buttons</span><span class="section-heading__ja">ボタン</span></h2>
+  <div class="section-heading__aside"><p class="section-heading__lead">ホバー時は塗りが左から広がり、矢印が前へ動きます。紺地では Primary がゴールドに切り替わります。タップ領域は 40px 以上を確保しています。</p></div>
+</header>
+    <div class="sg-stack">
+      <p class="t-label t-muted">On light</p>
+      <div class="cluster">
+      <a class="btn btn--primary" href="#"><span class="btn__label">体験練習に申し込む</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+      <a class="btn btn--secondary" href="#"><span class="btn__label">クラブについて</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+      <a class="btn btn--accent" href="#"><span class="btn__label">JOIN US</span></a>
+      <a class="btn btn--text" href="#"><span class="btn__label">一覧を見る</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+      <p class="t-label t-muted">Sizes</p>
+      <div class="cluster">
+        <a class="btn btn--primary btn--sm" href="#"><span class="btn__label">小 sm</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+        <a class="btn btn--primary" href="#"><span class="btn__label">標準 md</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+        <a class="btn btn--primary btn--lg" href="#"><span class="btn__label">大 lg</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+      <p class="t-label t-muted">States</p>
+      <div class="cluster">
+        <button class="btn btn--primary" type="button" disabled="disabled"><span class="btn__label">受付終了</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></button>
+        <button class="btn btn--primary" type="button" aria-busy="true"><span class="btn__label">送信中</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></button>
+        <a class="btn btn--secondary btn--external" href="#" rel="noopener" target="_blank"><span class="btn__label">公式 Instagram</span><span class="visually-hidden">（外部サイトが開きます）</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div>
+      <div style="max-width:22rem"><a class="btn btn--primary btn--block" href="#"><span class="btn__label">幅いっぱい block</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+  <div class="tone-navy sg-band">
+    <div class="container sg-stack">
+      <p class="t-label t-muted">On navy</p>
+      <div class="cluster">
+      <a class="btn btn--primary" href="#"><span class="btn__label">体験練習に申し込む</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+      <a class="btn btn--secondary" href="#"><span class="btn__label">クラブについて</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+      <a class="btn btn--accent" href="#"><span class="btn__label">JOIN US</span></a>
+      <a class="btn btn--text" href="#"><span class="btn__label">一覧を見る</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+      <div class="cluster">
+        <button class="btn btn--primary" type="button" disabled="disabled"><span class="btn__label">受付終了</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></button>
+        <button class="btn btn--primary" type="button" aria-busy="true"><span class="btn__label">送信中</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="section tone-mist" aria-labelledby="sg-heading">
+  <div class="container">
+    <header class="section-heading" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">05</span><span class="section-heading__rule"></span></div>
+  <h2 class="section-heading__title" id="sg-heading"><span class="section-heading__en" lang="en">Section Heading</span><span class="section-heading__ja">セクション見出し</span></h2>
+  
+</header>
+    <div class="sg-stack sg-stack--loose">
+      <header class="section-heading section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">03</span><span class="section-heading__rule"></span></div>
+  <h3 class="section-heading__title"><span class="section-heading__en" lang="en">Latest News</span><span class="section-heading__ja">最新ニュース</span></h3>
+  <div class="section-heading__aside"><p class="section-heading__lead">クラブの活動報告、試合結果、イベント情報をお届けします。</p><a class="btn btn--text" href="#"><span class="btn__label">ニュース一覧</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a></div>
+</header>
+      <header class="section-heading section-heading--has-aside" data-reveal>
+  
+  <h3 class="section-heading__title"><span class="section-heading__ja section-heading__ja--primary">英語表記なしの見出し</span></h3>
+  <div class="section-heading__aside"><p class="section-heading__lead">英語表記を省くと、和文の見出しがそのまま大見出しになります。</p></div>
+</header>
+      <header class="section-heading section-heading--center section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">08</span><span class="section-heading__rule"></span></div>
+  <h3 class="section-heading__title"><span class="section-heading__en" lang="en">Join Us</span><span class="section-heading__ja">選手募集</span></h3>
+  <div class="section-heading__aside"><p class="section-heading__lead">中央揃えは、募集の呼びかけなど単独で置く見出しに使います。</p></div>
+</header>
+    </div>
+  </div>
+  <div class="tone-navy sg-band">
+    <div class="container">
+      <header class="section-heading section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">02</span><span class="section-heading__rule"></span></div>
+  <h3 class="section-heading__title"><span class="section-heading__en" lang="en">Next Match</span><span class="section-heading__ja">次の試合</span></h3>
+  <div class="section-heading__aside"><p class="section-heading__lead">紺地では番号がゴールドになり、テキストは自動で白系に切り替わります。</p><a class="btn btn--text" href="#"><span class="btn__label">日程をすべて見る</span><svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a></div>
+</header>
+    </div>
+  </div>
+</section>
+  <section class="section" aria-labelledby="sg-cards">
+  <div class="container">
+    <header class="section-heading section-heading--has-aside" data-reveal>
+  <div class="section-heading__index" aria-hidden="true"><span class="section-heading__number">06</span><span class="section-heading__rule"></span></div>
+  <h2 class="section-heading__title" id="sg-cards"><span class="section-heading__en" lang="en">Cards</span><span class="section-heading__ja">カード</span></h2>
+  <div class="section-heading__aside"><p class="section-heading__lead">カード全体がリンクになっています（リンクはタイトル1つだけ）。ホバー時は少し浮き上がり、写真が拡大し、タイトルに下線が引かれます。写真がない場合はデザイン済みのプレースホルダーを表示します。</p></div>
+</header>
+    <div class="sg-stack sg-stack--loose">
+      <p class="t-label t-muted">NewsCard：feature</p>
+      <article class="card news-card news-card--feature">
+  <div class="media media--wide card__media media--placeholder" role="img" aria-label="写真準備中：合宿でのトレーニング風景">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="card__body">
+    <div class="card__meta">
+      <time class="t-label" datetime="2026-11-18">2026.11.18</time>
+      <span class="badge badge--outline">お知らせ</span>
+    </div>
+    <h3 class="card__title"><a class="card__link" href="#">冬季強化合宿の実施について（U-12・U-15）</a></h3>
+    <p class="card__excerpt">12月下旬に予定している冬季強化合宿の日程と持ち物をお知らせします。参加申込は所定のフォームから受け付けます（サンプル記事）。</p>
+    <span class="card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article>
+      <p class="t-label t-muted sg-after-feature">NewsCard：default</p>
+      <div class="grid-auto" style="--grid-min:20rem">
+        <article class="card news-card">
+  <div class="media media--landscape card__media media--placeholder" role="img" aria-label="写真準備中：合宿でのトレーニング風景">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="card__body">
+    <div class="card__meta">
+      <time class="t-label" datetime="2026-11-18">2026.11.18</time>
+      <span class="badge badge--outline">お知らせ</span>
+    </div>
+    <h3 class="card__title"><a class="card__link" href="#">冬季強化合宿の実施について（U-12・U-15）</a></h3>
+    <p class="card__excerpt">12月下旬に予定している冬季強化合宿の日程と持ち物をお知らせします。参加申込は所定のフォームから受け付けます（サンプル記事）。</p>
+    <span class="card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article><article class="card news-card">
+  <div class="media media--landscape card__media media--placeholder" role="img" aria-label="写真準備中：ゴール後に喜ぶ選手たち">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="card__body">
+    <div class="card__meta">
+      <time class="t-label" datetime="2026-11-16">2026.11.16</time>
+      <span class="badge badge--outline">試合結果</span>
+    </div>
+    <h3 class="card__title"><a class="card__link" href="#">U-15 リーグ第8節 サンプル杯 試合結果</a></h3>
+    <p class="card__excerpt">ホームで行われた第8節は、後半の連続得点で逆転勝利しました（架空の試合結果です）。</p>
+    <span class="card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article><article class="card news-card">
+  <div class="media media--landscape card__media media--placeholder" role="img" aria-label="写真準備中：スクールでボールを蹴る子どもたち">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="card__body">
+    <div class="card__meta">
+      <time class="t-label" datetime="2026-11-10">2026.11.10</time>
+      <span class="badge badge--outline">スクール</span>
+    </div>
+    <h3 class="card__title"><a class="card__link" href="#">スクール無料体験会を開催します。年長〜小学2年生を募集</a></h3>
+    
+    <span class="card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article>
+      </div>
+      <p class="t-label t-muted">TeamCard：カテゴリーはデータから生成</p>
+      <div class="grid-auto" style="--grid-min:14rem">
+        <article class="card team-card">
+  <div class="media media--portrait card__media media--placeholder" role="img" aria-label="写真準備中：U-8 の選手たち">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="team-card__overlay on-dark">
+    <h3 class="team-card__title"><a class="card__link" href="#"><span class="team-card__label" lang="en">U-8</span><span class="team-card__name">キッズ</span></a></h3>
+    <p class="team-card__grade">年長〜小学2年生</p>
+    
+    <span class="card__arrow team-card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article><article class="card team-card">
+  <div class="media media--portrait card__media media--placeholder" role="img" aria-label="写真準備中：U-10 の選手たち">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="team-card__overlay on-dark">
+    <h3 class="team-card__title"><a class="card__link" href="#"><span class="team-card__label" lang="en">U-10</span><span class="team-card__name">ジュニア</span></a></h3>
+    <p class="team-card__grade">小学3・4年生</p>
+    
+    <span class="card__arrow team-card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article><article class="card team-card">
+  <div class="media media--portrait card__media media--placeholder" role="img" aria-label="写真準備中：U-12 の選手たち">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="team-card__overlay on-dark">
+    <h3 class="team-card__title"><a class="card__link" href="#"><span class="team-card__label" lang="en">U-12</span><span class="team-card__name">ジュニア</span></a></h3>
+    <p class="team-card__grade">小学5・6年生</p>
+    
+    <span class="card__arrow team-card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article><article class="card team-card">
+  <div class="media media--portrait card__media media--placeholder" role="img" aria-label="写真準備中：U-15 の選手たち">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="team-card__overlay on-dark">
+    <h3 class="team-card__title"><a class="card__link" href="#"><span class="team-card__label" lang="en">U-15</span><span class="team-card__name">ジュニアユース</span></a></h3>
+    <p class="team-card__grade">中学1〜3年生</p>
+    
+    <span class="card__arrow team-card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article><article class="card team-card">
+  <div class="media media--portrait card__media media--placeholder" role="img" aria-label="写真準備中：U-18 の選手たち">
+  <svg class="media__pitch" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="20" y="20" width="360" height="220"/>
+      <path d="M200 20v220"/>
+      <circle cx="200" cy="130" r="34"/>
+      <rect x="20" y="78" width="54" height="104"/>
+      <rect x="326" y="78" width="54" height="104"/>
+    </g>
+  </svg>
+  <span class="media__placeholder-label" aria-hidden="true">Photo</span>
+</div>
+  <div class="team-card__overlay on-dark">
+    <h3 class="team-card__title"><a class="card__link" href="#"><span class="team-card__label" lang="en">U-18</span><span class="team-card__name">ユース</span></a></h3>
+    <p class="team-card__grade">高校1〜3年生</p>
+    
+    <span class="card__arrow team-card__arrow"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+  </div>
+</article>
+      </div>
+      <p class="t-label t-muted">MatchCard：default / feature</p>
+      <div class="grid-auto" style="--grid-min:19rem">
+        <article class="card match-card">
+  <div class="match-card__head">
+    <p class="match-card__competition"><span class="match-card__category" lang="en">U-15</span>サンプル地区リーグ <span class="match-card__round">第9節</span></p>
+    <div class="cluster match-card__badges">
+      
+      <span class="badge badge--royal">開催予定</span>
+    </div>
+  </div>
+  <h3 class="match-card__fixture"><span class="match-card__team match-card__team--home"><span class="crest crest--club" aria-hidden="true">SFC</span><span class="match-card__team-name">サンプルFC</span></span>
+    <span class="match-card__center"><span class="match-card__vs" lang="en"> VS </span></span>
+    <span class="match-card__team match-card__team--away"><span class="crest" aria-hidden="true">MDF</span><span class="match-card__team-name">みなと台FC</span></span></h3>
+  <dl class="match-card__details">
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="visually-hidden">日付</span></dt><dd><time datetime="2026-11-29T10:00"><span class="match-card__day tabular">11.29</span><span class="match-card__weekday">（日）</span><span class="tabular">10:00</span></time></dd></div>
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.25"/></svg><span class="visually-hidden">会場</span></dt><dd>サンプル市立総合グラウンド</dd></div>
+  </dl>
+</article><article class="card match-card">
+  <div class="match-card__head">
+    <p class="match-card__competition"><span class="match-card__category" lang="en">U-12</span>サンプル市少年サッカー大会 <span class="match-card__round">準決勝</span></p>
+    <div class="cluster match-card__badges">
+      <span class="match-card__result match-card__result--win">勝利</span>
+      <span class="badge badge--navy">試合終了</span>
+    </div>
+  </div>
+  <h3 class="match-card__fixture"><span class="match-card__team match-card__team--home"><span class="crest" aria-hidden="true">HSC</span><span class="match-card__team-name">ひかりが丘SC</span></span>
+    <span class="match-card__center"><span class="match-card__score tabular">1<span class="match-card__dash"> - </span>3</span></span>
+    <span class="match-card__team match-card__team--away"><span class="crest crest--club" aria-hidden="true">SFC</span><span class="match-card__team-name">サンプルFC</span></span></h3>
+  <dl class="match-card__details">
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="visually-hidden">日付</span></dt><dd><time datetime="2026-11-16T13:30"><span class="match-card__day tabular">11.16</span><span class="match-card__weekday">（月）</span><span class="tabular">13:30</span></time></dd></div>
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.25"/></svg><span class="visually-hidden">会場</span></dt><dd>河川敷第2グラウンド</dd></div>
+  </dl>
+</article><article class="card match-card">
+  <div class="match-card__head">
+    <p class="match-card__competition"><span class="match-card__category" lang="en">U-18</span>サンプル県ユースリーグ <span class="match-card__round">第12節</span></p>
+    <div class="cluster match-card__badges">
+      
+      <span class="badge badge--muted">延期</span>
+    </div>
+  </div>
+  <h3 class="match-card__fixture"><span class="match-card__team match-card__team--home"><span class="crest crest--club" aria-hidden="true">SFC</span><span class="match-card__team-name">サンプルFC</span></span>
+    <span class="match-card__center"><span class="match-card__vs" lang="en"> VS </span></span>
+    <span class="match-card__team match-card__team--away"><span class="crest" aria-hidden="true">NU</span><span class="match-card__team-name">北部ユナイテッド</span></span></h3>
+  <dl class="match-card__details">
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="visually-hidden">日付</span></dt><dd><time datetime="2026-11-23T11:00"><span class="match-card__day tabular">11.23</span><span class="match-card__weekday">（月）</span><span class="tabular">11:00</span></time></dd></div>
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.25"/></svg><span class="visually-hidden">会場</span></dt><dd>サンプル学園グラウンド</dd></div>
+  </dl>
+</article>
+      </div>
+      <article class="card match-card match-card--feature on-dark">
+  <div class="match-card__head">
+    <p class="match-card__competition"><span class="match-card__category" lang="en">U-15</span>サンプル地区リーグ <span class="match-card__round">第9節</span></p>
+    <div class="cluster match-card__badges">
+      
+      <span class="badge badge--gold">開催予定</span>
+    </div>
+  </div>
+  <h3 class="match-card__fixture"><a class="card__link match-card__link" href="#"><span class="match-card__team match-card__team--home"><span class="crest crest--club" aria-hidden="true">SFC</span><span class="match-card__team-name">サンプルFC</span></span>
+    <span class="match-card__center"><span class="match-card__vs" lang="en"> VS </span></span>
+    <span class="match-card__team match-card__team--away"><span class="crest" aria-hidden="true">MDF</span><span class="match-card__team-name">みなと台FC</span></span></a></h3>
+  <dl class="match-card__details">
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="visually-hidden">日付</span></dt><dd><time datetime="2026-11-29T10:00"><span class="match-card__day tabular">11.29</span><span class="match-card__weekday">（日）</span><span class="tabular">10:00</span></time></dd></div>
+    <div><dt><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.25"/></svg><span class="visually-hidden">会場</span></dt><dd>サンプル市立総合グラウンド</dd></div>
+  </dl>
+</article>
+    </div>
+  </div>
+</section>
+</main>
+</body>
+</html>

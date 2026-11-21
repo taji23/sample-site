@@ -1,0 +1,139 @@
+/* Design-system page only (/styleguide/). Not part of the site bundle. */
+
+.sg-hero {
+  padding-block: clamp(5rem, 3rem + 8vw, 9rem) clamp(3rem, 2rem + 4vw, 5rem);
+}
+
+.sg-hero .t-display {
+  color: var(--color-heading);
+}
+
+.sg-hero .t-display::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: var(--rule-accent);
+  margin-top: var(--space-l);
+  background: var(--brand-gold);
+}
+
+.sg-hero__lead {
+  margin-top: var(--space-l);
+  color: var(--color-text-muted);
+}
+
+.sg-band {
+  margin-top: var(--section-space-tight);
+  padding-block: var(--section-space-tight);
+}
+
+.sg-stack {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.sg-stack--loose {
+  gap: var(--space-2xl);
+}
+
+.sg-stack > .t-label {
+  margin-top: var(--space-m);
+}
+
+.sg-after-feature {
+  margin-top: var(--space-2xl);
+}
+
+.sg-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  gap: var(--space-l) var(--grid-gap);
+}
+
+.sg-swatch {
+  display: grid;
+  gap: var(--space-3xs);
+}
+
+.sg-swatch__chip {
+  aspect-ratio: 16 / 10;
+  margin-bottom: var(--space-xs);
+  border: var(--border-hair) solid var(--color-line);
+}
+
+.sg-swatch__token,
+.sg-type code,
+.sg-stack code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  color: var(--color-text-muted);
+}
+
+.sg-swatch__role {
+  font-weight: var(--fw-bold);
+  color: var(--color-heading);
+}
+
+.sg-type {
+  display: grid;
+}
+
+.sg-type__row {
+  display: grid;
+  gap: var(--space-xs);
+  padding-block: var(--space-l);
+  border-top: var(--border-hair) solid var(--color-line);
+}
+
+@media (min-width: 48em) {
+  .sg-type__row {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--grid-gap);
+  }
+}
+
+.sg-type .t-display,
+.sg-type .t-h1,
+.sg-type .t-h2,
+.sg-type .t-h3 {
+  color: var(--color-heading);
+}
+
+.sg-containers {
+  display: grid;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-2xl);
+}
+
+.sg-bar {
+  padding: var(--space-xs) var(--space-s);
+  background: var(--color-tint);
+  border-inline: var(--rule-accent) solid var(--brand-gold);
+  color: var(--color-heading);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+}
+
+.sg-cell {
+  display: grid;
+  place-items: center;
+  min-height: 5rem;
+  background: var(--color-tint);
+  color: var(--color-heading);
+  font-family: var(--font-numeric);
+  font-weight: var(--fw-bold);
+}
+
+.sg-cell--tall {
+  min-height: 16rem;
+  background: var(--brand-navy);
+  color: var(--brand-white);
+}
+
+.sg-cell--panel {
+  min-height: 10rem;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-m);
+}

@@ -1,0 +1,153 @@
+/* ==========================================================================
+   Layout primitives: containers, sections, tones, stacks, grids
+   Mobile-first; breakpoints: 40em (640) / 64em (1024) / 80em (1280)
+   ========================================================================== */
+
+/* ---- Containers ---------------------------------------------------------- */
+
+.container {
+  --_max: var(--container-max);
+  width: 100%;
+  max-width: calc(var(--_max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--wide {
+  --_max: var(--container-wide);
+}
+
+.container--narrow {
+  --_max: var(--container-narrow);
+}
+
+/* Full-bleed child inside a container (images, bands). */
+.bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+/* ---- Sections & tones ---------------------------------------------------- */
+
+.section {
+  position: relative;
+  padding-block: var(--section-space);
+}
+
+.section--tight {
+  padding-block: var(--section-space-tight);
+}
+
+.section--flush-top {
+  padding-top: 0;
+}
+
+.tone-light {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.tone-mist {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+/* Navy band. Children inherit dark-surface colors through the .on-dark hook. */
+.tone-navy,
+.on-dark {
+  --color-text: var(--color-dark-text);
+  --color-text-muted: var(--color-dark-text-muted);
+  --color-heading: var(--color-dark-text);
+  --color-action: var(--color-dark-text);
+  --color-action-hover: var(--brand-gold);
+  --color-accent-text: var(--brand-gold);
+  --color-line: var(--color-dark-line);
+  --color-line-strong: color-mix(in srgb, var(--brand-white) 32%, transparent);
+  --color-focus: var(--color-dark-focus);
+  --color-surface: var(--color-dark-bg-raised);
+  color: var(--color-text);
+}
+
+.tone-navy {
+  background: var(--color-dark-bg);
+}
+
+/* ---- Flow primitives ----------------------------------------------------- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-m));
+}
+
+.stack--s {
+  --stack-gap: var(--space-s);
+}
+
+.stack--l {
+  --stack-gap: var(--space-xl);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cluster-gap, var(--space-s));
+}
+
+/* ---- Grids --------------------------------------------------------------- */
+
+/* Auto-filling card grid; never hardcodes the number of items. */
+.grid-auto {
+  --_min: var(--grid-min, 17rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--_min), 100%), 1fr));
+  gap: var(--grid-gap);
+}
+
+/* 12-column editorial grid for asymmetric compositions. */
+.grid-12 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--grid-gap);
+}
+
+@media (min-width: 64em) {
+  .grid-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+/* Asymmetric split: 7 / 5 by default, reversible, with optional overlap. */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl) var(--grid-gap);
+  align-items: center;
+}
+
+@media (min-width: 64em) {
+  .split {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+
+  .split--reverse {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .split--reverse > :first-child {
+    order: 2;
+  }
+
+  /* Pulls the text column over the media column for layered editorial blocks. */
+  .split--overlap > :last-child {
+    position: relative;
+    z-index: var(--z-raised);
+    margin-inline-start: calc(var(--space-3xl) * -1);
+  }
+
+  .split--reverse.split--overlap > :last-child {
+    margin-inline-start: 0;
+    margin-inline-end: calc(var(--space-3xl) * -1);
+  }
+}
